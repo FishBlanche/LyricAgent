@@ -67,8 +67,4 @@ npm run dev
 
 The frontend expects the backend at `http://localhost:8000` by default.
 
-If needed, copy `frontend/.env.example` to `frontend/.env` and adjust:
-
-```bash
-VITE_API_BASE_URL=http://localhost:8000
-```
+ 
