@@ -6,7 +6,6 @@ class GenerateLyricsRequest(BaseModel):
     perspective: str = Field(..., min_length=1, max_length=80)
     keywords: str = Field(..., min_length=1, max_length=240)
 
-
 class GenerateLyricsResponse(BaseModel):
     concept: str
     hooks: list[str]
