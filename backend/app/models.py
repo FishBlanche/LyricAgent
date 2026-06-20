@@ -1,6 +1,5 @@
 from pydantic import BaseModel, Field
 
-
 class GenerateLyricsRequest(BaseModel):
     theme: str = Field(..., min_length=1, max_length=120)
     emotion: str = Field(..., min_length=1, max_length=80)
