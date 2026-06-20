@@ -3,8 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .models import GenerateLyricsRequest, GenerateLyricsResponse
 from .services import generate_lyrics
-
-app = FastAPI(title="LyricAgent API", version="1.0.0")
+app = FastAPI(title="LyricAgent API", version="1.0.1")
 
 app.add_middleware(
     CORSMiddleware,
