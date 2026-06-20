@@ -1,0 +1,35 @@
+name: Test CI
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run fake failed test
+        id: run_tests
+        continue-on-error: true
+        run: |
+          echo "Running tests..." | tee ci.log
+          echo "Error: Cannot find module 'react'" | tee -a ci.log
+          echo "build failed" | tee -a ci.log
+          exit 1
+
+      - name: Explain CI failure
+        if: steps.run_tests.outcome == 'failure'
+        uses: FishBlanche/ci-failure-explainer-action@v1
+        env:
+          LOG_FILE_PATH: ci.log
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
